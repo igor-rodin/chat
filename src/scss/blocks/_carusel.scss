@@ -1,0 +1,17 @@
+.carusel-body {
+  display: flex;
+  align-items: center;
+  font-size: 23px;
+  font-weight: bold;
+  line-height: 1;
+  height: 60px;
+  justify-content: space-around;
+  color: #000000;
+}
+
+.carusel__link{
+  padding: 4px 10px;
+} 
+.carusel__link:hover {
+  opacity: 0.6;
+} 

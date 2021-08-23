@@ -1,0 +1,17 @@
+$btn-bg-color: #5188C1;
+
+.button {
+  padding: 13px 40px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.133;
+  border-radius: 5px;
+  background-color: $btn-bg-color;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}

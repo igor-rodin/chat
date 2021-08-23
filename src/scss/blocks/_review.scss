@@ -1,0 +1,22 @@
+.review--popup {
+  background: white;
+  border-bottom: 1px solid gray;
+  width: 100%;
+}
+
+.review__header {
+  margin-bottom: 4px;
+}
+
+.review__user {
+  color: $main-color;
+}
+
+.review--popup .review__user,
+.review--popup .review__place {
+  margin-right: 10px;
+}
+
+.review--popup .review__text {
+  margin-bottom: 8px;
+}
