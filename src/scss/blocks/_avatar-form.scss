@@ -1,0 +1,59 @@
+.avatar-form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 364px;
+  background-color: $bg-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid $second-color;
+  border-radius: 4px;
+  padding: 30px 34px;
+  font-size: 24px;
+  color: $second-color;
+}
+
+.avatar-form__header {
+  margin-bottom: 8px;
+}
+
+.avatar-form__image {
+  width: 284px;
+  height: 284px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
+
+.avatar-image {
+  width: 100%;
+  height: auto;
+}
+
+.avatar-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.avatar-form__file {
+  cursor: pointer;
+  text-transform: uppercase;
+  position: relative;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.133;
+  color: #6BB2F2;
+  padding: 13px 20px;
+  margin-bottom: 8px;
+}
+
+.avatar-form__input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}

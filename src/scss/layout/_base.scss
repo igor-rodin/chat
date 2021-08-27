@@ -1,11 +1,15 @@
 $main-color: #FFFFFF;
-$sub-header-color: #7F91A4;
+$sub-header-color:#7F91A4;
+$second-color: #5387C1;
 $bg-color: #17212B;
-$main-font: "Ubuntu", sans-serif;
+$bg-message: #2B5279;
+$main-font: "Ubuntu",
+sans-serif;
 $main-font-size: 16px;
 
 :root {
   box-sizing: border-box;
+  font-size: 16px;
 }
 
 * {
@@ -37,7 +41,7 @@ body {
   font-family: $main-font;
   position: relative;
   color: $main-color;
-  font-weight: normal;
+  font-weight: 300;
   font-style: normal;
   line-height: 1.143;
   -webkit-font-smoothing: antialiased;

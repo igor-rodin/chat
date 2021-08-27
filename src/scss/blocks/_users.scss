@@ -1,0 +1,12 @@
+.users {
+  font-weight: 500;
+  color: $second-color;
+
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 22px;
+}
+
+.users__list {
+  overflow: auto;
+}

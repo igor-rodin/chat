@@ -14,4 +14,10 @@ $btn-bg-color: #5188C1;
     cursor: pointer;
     opacity: 0.8;
   }
+
+  &--cancel {
+    background-color: transparent;
+    color: #6BB2F2;
+    padding: 13px 20px;
+  }
 }
