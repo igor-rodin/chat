@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         })
 
-        const ws = new WebSocket("ws://localhost:8000/");
+        const ws = new WebSocket("ws://localhost:8080/");
 
         ws.onopen = (e) => {
           const message = {

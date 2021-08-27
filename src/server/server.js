@@ -4,8 +4,8 @@ const { v4: uuidv4 } = require('uuid');
 let clients = {};
 const users = [];
 const messages = [];
-const webSocketServer = new WebSocketServer.Server({ port: 8000 }, () => {
-  console.log('Сервер запущен на порту 8000');
+const webSocketServer = new WebSocketServer.Server({ port: 8080 }, () => {
+  console.log('Сервер запущен на порту 8080');
 });
 
 webSocketServer.on('connection', function (ws) {
@@ -36,7 +36,7 @@ webSocketServer.on('connection', function (ws) {
         }));
         break;
       case 'avatar':
-        debugger;
+        updateMesaagesWithAvatar(clientId, user.avatar);
         sendBroadcastMessage(JSON.stringify({
           users: [],
           messages: [{ id: clientId, type: type, avatarSrc: user.avatar }],
@@ -63,5 +63,13 @@ webSocketServer.on('connection', function (ws) {
     for (const id in clients) {
       clients[id].send(message);
     }
+  };
+
+  function updateMesaagesWithAvatar(clientId, userAvatar) {
+    messages.forEach((msg) => {
+      if (msg.id === clientId) {
+        msg.user.avatar = userAvatar;
+      }
+    })
   };
 });
