@@ -1,0 +1,22 @@
+  <div class="chat__users users">
+    <div class="user user--active">
+      <a id="loadLink" class="user__avatar-link" title="Загрузить аватар" href="#">
+        <div class="user__logo"><img id="activeUserImg" src={{avatar}} alt="аватар пользователя"></div>
+        <div class="user__name">{{user}} ({{nick}})</div>
+      </a>
+    </div>
+    <div class="chat__info">Участники (<span id='userCnt'></span>)</div>
+    <ul id='users' class="users__list">
+    </ul>
+  </div>
+  <div class="chat__header">
+    <div class="chat__title">Чат</div>
+  </div>
+  <div class="chat__messages">
+    <ul id='msgList' class="messages-list messages">
+    </ul>
+  </div>
+  <div class="chat__form-input">
+    <input id="inputMessage" class="chat__input-message" type="text" placeholder="Введите сообщение...">
+    <button id="sendBtn" class="button chat__button-send">Отправить</button>
+  </div>

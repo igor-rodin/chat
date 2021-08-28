@@ -2,7 +2,6 @@ module.exports = {
   plugins: [
     'postcss-preset-env',
     ['postcss-pxtorem', {
-      rootValue: 16,
       unitPrecision: 5,
       propList: ['*'],
       replace: true,
