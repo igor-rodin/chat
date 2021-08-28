@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   function updateAvatar(container, userId, avatarSrc) {
-    const targets = document.querySelectorAll('.user');
+    const targets = container.querySelectorAll('.user, .message--user');
     targets.forEach((target) => {
       if (target.dataset.userId === userId) {
         target.querySelector('img').src = avatarSrc;
@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
       else if (msg.type === 'user') {
         const msgElem = createMessage({
           userMessage: true,
-          userId: msg.user.id,
+          userId: msg.id,
           avatar: msg.user.avatar,
           userName: msg.user.name,
           msgText: msg.message,
