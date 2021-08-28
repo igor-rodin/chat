@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const acUserHash = stringHash(`${fio}-${nickName}`);
             if (acUserHash in avatars) {
               appContainer.querySelector('.user--active img').src = avatars[acUserHash];
+              activeUser.avatar = avatars[acUserHash];
             }
           }
 

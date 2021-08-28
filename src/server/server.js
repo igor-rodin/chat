@@ -62,15 +62,16 @@ webSocketServer.on('connection', function (ws) {
 
   ws.on('close', function () {
     const closedIdx = users.findIndex((user) => user.id === clientId);
+    const removedUser = users[closedIdx].user;
     const msgText = `${users[closedIdx].user.name} (${users[closedIdx].user.nickName}) вышел из чата`;
     messages.push({ id: clientId, type: 'connection', user: users[closedIdx].user, message: msgText });
 
+    users.splice(closedIdx, 1);
     sendBroadcastMessage(JSON.stringify({
       users: users,
-      messages: [{ id: clientId, type: 'connection', user: users[closedIdx].user, message: msgText }]
+      messages: [{ id: clientId, type: 'connection', user: removedUser, message: msgText }]
     }));
 
-    users.splice(closedIdx, 1);
     delete clients[clientId];
   });
 
