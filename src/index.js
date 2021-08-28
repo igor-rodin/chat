@@ -5,6 +5,7 @@ import avatarDefault from './images/abstract-user.svg'
 import { createUser } from './js/user'
 import { createMessage } from './js/message'
 import { createAvatarForm } from './js/avatar-form.js'
+const stringHash = require("string-hash");
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -127,7 +128,14 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         ws.onmessage = (message) => {
-          const { users, messages } = JSON.parse(message.data);
+          const { users, messages, avatars } = JSON.parse(message.data);
+
+          if (avatars) {
+            const acUserHash = stringHash(`${fio}-${nickName}`);
+            if (acUserHash in avatars) {
+              appContainer.querySelector('.user--active img').src = avatars[acUserHash];
+            }
+          }
 
           if (users.length) {
             appContainer.querySelector('#userCnt').textContent = users.length;

@@ -1,9 +1,12 @@
 const WebSocketServer = new require('ws');
 const { v4: uuidv4 } = require('uuid');
+const stringHash = require("string-hash");
 
 let clients = {};
 const users = [];
 const messages = [];
+const avatarMap = {};
+
 const webSocketServer = new WebSocketServer.Server({ port: 8080 }, () => {
   console.log('Сервер запущен на порту 8080');
 });
@@ -17,15 +20,25 @@ webSocketServer.on('connection', function (ws) {
   ws.on('message', function (receivedMsg) {
     const { type, user, message } = JSON.parse(receivedMsg);
 
-
     switch (type) {
       case 'connection':
         const msgText = `${user.name} (${user.nickName}) вошел в чат`;
+
+        const hashName = stringHash(`${user.name}-${user.nickName}`);
+        if (hashName in avatarMap) {
+          user.avatar = avatarMap[hashName];
+        }
+        else {
+          avatarMap[hashName] = user.avatar;
+        }
+
         users.push({ id: clientId, type: type, user: user });
+
         messages.push({ id: clientId, type: type, user: user, message: msgText });
         sendBroadcastMessage(JSON.stringify({
           users: users,
           messages: [{ id: clientId, type: type, user: user, message: msgText }],
+          avatars: avatarMap
         }));
         break;
       case 'user':
@@ -36,6 +49,8 @@ webSocketServer.on('connection', function (ws) {
         }));
         break;
       case 'avatar':
+        const hash = stringHash(`${user.name}-${user.nickName}`);
+        avatarMap[hash] = user.avatar;
         updateMesaagesWithAvatar(clientId, user.avatar);
         sendBroadcastMessage(JSON.stringify({
           users: [],
